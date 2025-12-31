@@ -67,12 +67,18 @@ class Firework {
   dead: boolean;
   coordinates: [number, number][];
 
-  constructor(sx: number, sy: number, tx: number, ty: number) {
+  constructor(
+    sx: number,
+    sy: number,
+    tx: number,
+    ty: number,
+    targetHue?: number
+  ) {
     this.x = sx;
     this.y = sy;
     this.sx = sx;
     this.sy = sy;
-    this.hue = Math.random() * 360;
+    this.hue = targetHue !== undefined ? targetHue : Math.random() * 360;
     this.brightness = Math.random() * 50 + 50;
     this.alpha = 1;
     this.dead = false;
@@ -121,7 +127,7 @@ class Firework {
   }
 }
 
-export default function Fireworks() {
+export default function Fireworks({ hue }: { hue?: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -163,7 +169,7 @@ export default function Fireworks() {
         const maxDeviation = Math.min(width * 0.2, 200);
         const tx = sx + (Math.random() * 2 - 1) * maxDeviation;
         const ty = Math.random() * (height / 2);
-        fireworks.push(new Firework(sx, sy, tx, ty));
+        fireworks.push(new Firework(sx, sy, tx, ty, hue));
       }
 
       // Update and draw fireworks
@@ -202,7 +208,7 @@ export default function Fireworks() {
       window.removeEventListener("resize", handleResize);
       cancelAnimationFrame(animationId);
     };
-  }, []);
+  }, [hue]);
 
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />;
 }
