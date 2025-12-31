@@ -12,6 +12,38 @@ if (!fs.existsSync(OUTPUT_DIR)) {
   fs.mkdirSync(OUTPUT_DIR, { recursive: true });
 }
 
+interface PostTag {
+  post_id: string;
+  tag_id: string;
+}
+
+interface Tag {
+  id: string;
+  name: string;
+}
+
+interface PostAuthor {
+  post_id: string;
+  author_id: string;
+}
+
+interface User {
+  id: string;
+  name: string;
+}
+
+interface Post {
+  id: string;
+  status: string;
+  title: string;
+  mobiledoc?: string;
+  html?: string;
+  published_at?: string;
+  slug: string;
+  feature_image?: string;
+  custom_excerpt?: string;
+}
+
 const rawData = fs.readFileSync(GHOST_DATA_PATH, "utf-8");
 const ghostData = JSON.parse(rawData);
 // Ghost export structure: { db: [ { data: { ... } } ] }
@@ -54,22 +86,22 @@ console.log(`Found ${posts.length} posts.`);
 // Helper to find tags for a post
 const getTags = (postId: string) => {
   const tagIds = posts_tags
-    .filter((pt: any) => pt.post_id === postId)
-    .map((pt: any) => pt.tag_id);
-  return tags.filter((t: any) => tagIds.includes(t.id)).map((t: any) => t.name);
+    .filter((pt: PostTag) => pt.post_id === postId)
+    .map((pt: PostTag) => pt.tag_id);
+  return tags.filter((t: Tag) => tagIds.includes(t.id)).map((t: Tag) => t.name);
 };
 
 // Helper to find authors for a post
 const getAuthors = (postId: string) => {
   const authorIds = posts_authors
-    .filter((pa: any) => pa.post_id === postId)
-    .map((pa: any) => pa.author_id);
+    .filter((pa: PostAuthor) => pa.post_id === postId)
+    .map((pa: PostAuthor) => pa.author_id);
   return users
-    .filter((u: any) => authorIds.includes(u.id))
-    .map((u: any) => u.name);
+    .filter((u: User) => authorIds.includes(u.id))
+    .map((u: User) => u.name);
 };
 
-posts.forEach((post: any) => {
+posts.forEach((post: Post) => {
   if (post.status !== "published") return;
 
   const postTags = getTags(post.id);
@@ -81,7 +113,7 @@ posts.forEach((post: any) => {
       const mobiledoc = JSON.parse(post.mobiledoc);
       // Try to extract markdown card
       const markdownCard = mobiledoc.cards.find(
-        (c: any) => c[0] === "markdown"
+        (c: [string, { markdown: string }]) => c[0] === "markdown"
       );
       if (markdownCard) {
         content = markdownCard[1].markdown;
@@ -112,6 +144,13 @@ posts.forEach((post: any) => {
     "/images/"
   );
   featureImage = featureImage.replace(/\/content\/images\//g, "/images/");
+
+  if (!post.published_at) {
+    console.warn(
+      `Skipping post ${post.title} because it has no published_at date`
+    );
+    return;
+  }
 
   const date = new Date(post.published_at);
   const dateStr = date.toISOString().split("T")[0];

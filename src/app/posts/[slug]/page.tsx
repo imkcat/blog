@@ -1,6 +1,7 @@
 import DateFormatter from "@/components/DateFormatter";
 import { getAllPostSlugs, getPostData } from "@/lib/posts";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import Image from "next/image";
 import Link from "next/link";
 import rehypeHighlight from "rehype-highlight";
 import remarkGfm from "remark-gfm";
@@ -49,17 +50,19 @@ export default async function Post({
         {postData.coverImage && (
           <div className="mb-12 -mx-5 sm:mx-0">
             <div className="relative aspect-video overflow-hidden sm:rounded-2xl shadow-lg dark:shadow-none border border-gray-100 dark:border-gray-800">
-              <img
+              <Image
                 src={postData.coverImage}
                 alt={`Cover Image for ${postData.title}`}
-                className="w-full h-full object-cover"
+                className="object-cover"
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
           </div>
         )}
 
         <div
-          className="prose prose-lg prose-slate dark:prose-invert max-w-none mx-auto
+          className="prose prose-lg prose-slate dark:prose-invert max-w-none mx-auto font-serif
             prose-headings:font-bold prose-headings:tracking-tight prose-headings:text-gray-900 dark:prose-headings:text-white
             prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline
             prose-img:rounded-xl prose-img:shadow-md

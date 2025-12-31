@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import DateFormatter from "./DateFormatter";
 
@@ -35,13 +36,15 @@ export default function PostCard({
         className="block overflow-hidden aspect-video relative bg-gray-100 dark:bg-gray-800"
       >
         {coverImage ? (
-          <img
+          <Image
             src={coverImage}
             alt={`Cover Image for ${title}`}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
-          <div className="flex h-full items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 text-gray-400 dark:text-gray-600">
+          <div className="flex h-full items-center justify-center bg-linear-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 text-gray-400 dark:text-gray-600">
             <svg
               className="w-12 h-12 opacity-20"
               fill="none"
@@ -59,7 +62,7 @@ export default function PostCard({
         )}
       </Link>
 
-      <div className="flex flex-col flex-grow p-6">
+      <div className="flex flex-col grow p-6">
         <div className="mb-3 flex items-center text-sm text-gray-500 dark:text-gray-400 font-medium">
           <DateFormatter dateString={date} />
         </div>
@@ -73,7 +76,7 @@ export default function PostCard({
           </h3>
         </Link>
 
-        <p className="mb-4 text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3 flex-grow text-sm">
+        <p className="mb-4 text-gray-600 dark:text-gray-300 leading-relaxed line-clamp-3 grow text-sm">
           {excerpt || "No description available."}
         </p>
 
