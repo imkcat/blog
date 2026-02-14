@@ -1,0 +1,445 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   Black & White Manga Style Design System
+   ======================================== */
+
+:root {
+  /* Light Mode - Pure Black & White */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F5F5F5;
+  
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --text-tertiary: #666666;
+  
+  --border-color: #000000;
+  --border-width: 3px;
+  
+  --accent: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #000000;
+    --bg-secondary: #000000;
+    --bg-tertiary: #111111;
+    
+    --text-primary: #FFFFFF;
+    --text-secondary: #CCCCCC;
+    --text-tertiary: #999999;
+    
+    --border-color: #FFFFFF;
+    --accent: #FFFFFF;
+  }
+}
+
+body {
+  font-family: 'Comic Neue', 'Bangers', cursive, system-ui, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+  border-left: var(--border-width) solid var(--border-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--text-primary);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* ========================================
+   Manga Panel Components
+   ======================================== */
+
+/* Navigation Panel */
+.manga-nav {
+  background: var(--bg-primary);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 4px 4px 0 var(--border-color);
+  transition: all 0.15s ease;
+}
+
+.manga-nav:hover {
+  box-shadow: 6px 6px 0 var(--border-color);
+  transform: translate(-2px, -2px);
+}
+
+/* Card/Panel Style */
+.manga-panel {
+  background: var(--bg-primary);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 5px 5px 0 var(--border-color);
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.manga-panel:hover {
+  box-shadow: 8px 8px 0 var(--border-color);
+  transform: translate(-3px, -3px);
+}
+
+/* Double border effect */
+.manga-panel-double {
+  background: var(--bg-primary);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 
+    5px 5px 0 var(--border-color),
+    inset 0 0 0 2px var(--bg-primary),
+    inset 0 0 0 4px var(--border-color);
+  transition: all 0.15s ease;
+}
+
+.manga-panel-double:hover {
+  box-shadow: 
+    8px 8px 0 var(--border-color),
+    inset 0 0 0 2px var(--bg-primary),
+    inset 0 0 0 4px var(--border-color);
+  transform: translate(-3px, -3px);
+}
+
+/* Speech Bubble Tag */
+.manga-tag {
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  position: relative;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.1s ease;
+}
+
+.manga-tag::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid var(--border-color);
+}
+
+.manga-tag::before {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--bg-primary);
+  z-index: 1;
+}
+
+.manga-tag:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+/* Button Style */
+.manga-button {
+  background: var(--bg-primary);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 3px 3px 0 var(--border-color);
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.1s ease;
+}
+
+.manga-button:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  box-shadow: 1px 1px 0 var(--border-color);
+  transform: translate(2px, 2px);
+}
+
+.manga-button:active {
+  box-shadow: 0 0 0 var(--border-color);
+  transform: translate(3px, 3px);
+}
+
+/* ========================================
+   Manga Background Patterns
+   ======================================== */
+
+/* Halftone/Screentone Pattern */
+.manga-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--bg-primary);
+  overflow: hidden;
+}
+
+.halftone-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.08;
+  background-image: radial-gradient(circle, var(--text-primary) 1px, transparent 1px);
+  background-size: 8px 8px;
+  pointer-events: none;
+}
+
+/* Speed Lines */
+.speed-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.speed-line {
+  position: absolute;
+  background: var(--border-color);
+  opacity: 0.06;
+  transform-origin: center;
+}
+
+/* Corner decorations */
+.manga-corner {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: var(--border-width) solid var(--border-color);
+  pointer-events: none;
+}
+
+.manga-corner-tl {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+}
+
+.manga-corner-tr {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+}
+
+.manga-corner-bl {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+}
+
+.manga-corner-br {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+}
+
+/* ========================================
+   Typography - Manga Style
+   ======================================== */
+
+.manga-title {
+  font-family: 'Bangers', cursive;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 
+    3px 3px 0 var(--bg-primary),
+    4px 4px 0 var(--border-color);
+}
+
+.manga-subtitle {
+  font-family: 'Comic Neue', cursive;
+  font-weight: 700;
+}
+
+/* Text with outline effect */
+.text-outline {
+  -webkit-text-stroke: 1px var(--border-color);
+  paint-order: stroke fill;
+}
+
+/* ========================================
+   Reading Progress - Manga Style
+   ======================================== */
+
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: var(--text-primary);
+  z-index: 100;
+  transform-origin: left;
+}
+
+/* ========================================
+   Typography - Prose
+   ======================================== */
+
+.prose {
+  --tw-prose-body: var(--text-secondary);
+  --tw-prose-headings: var(--text-primary);
+  --tw-prose-links: var(--text-primary);
+  --tw-prose-bold: var(--text-primary);
+  --tw-prose-quotes: var(--text-secondary);
+  --tw-prose-quote-borders: var(--text-primary);
+}
+
+.prose a {
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+.prose a:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.prose blockquote {
+  border-left: 4px solid var(--text-primary);
+  font-style: italic;
+}
+
+.prose code {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  padding: 2px 6px;
+}
+
+.prose pre {
+  background: var(--bg-tertiary) !important;
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 4px 4px 0 var(--border-color);
+}
+
+/* ========================================
+   Image Placeholder
+   ======================================== */
+
+.img-placeholder {
+  background: var(--bg-tertiary);
+  background-image: 
+    linear-gradient(45deg, var(--border-color) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--border-color) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--border-color) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--border-color) 75%);
+  background-size: 10px 10px;
+  background-position: 0 0, 0 5px, 5px -5px, -5px 0px;
+  opacity: 0.1;
+}
+
+/* ========================================
+   Animations - Manga Style
+   ======================================== */
+
+@keyframes manga-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px) rotate(-1deg); }
+  75% { transform: translateX(2px) rotate(1deg); }
+}
+
+@keyframes manga-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes manga-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.animate-manga-shake:hover {
+  animation: manga-shake 0.3s ease-in-out;
+}
+
+.animate-manga-bounce {
+  animation: manga-bounce 0.5s ease-in-out;
+}
+
+.animate-manga-pop:hover {
+  animation: manga-pop 0.2s ease-in-out;
+}
+
+/* ========================================
+   Utility Classes
+   ======================================== */
+
+/* Inverted colors on hover */
+.hover-invert:hover {
+  background: var(--text-primary) !important;
+  color: var(--bg-primary) !important;
+}
+
+/* Thick border utilities */
+.border-manga {
+  border: var(--border-width) solid var(--border-color);
+}
+
+.border-manga-thin {
+  border: 2px solid var(--border-color);
+}
+
+/* Shadow utilities */
+.shadow-manga {
+  box-shadow: 4px 4px 0 var(--border-color);
+}
+
+.shadow-manga-lg {
+  box-shadow: 6px 6px 0 var(--border-color);
+}
+
+/* Legacy class mappings for compatibility */
+.glass-panel {
+  background: var(--bg-primary);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 4px 4px 0 var(--border-color);
+}
+
+.glass-card {
+  background: var(--bg-primary);
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 5px 5px 0 var(--border-color);
+  transition: all 0.15s ease;
+}
+
+.glass-card:hover {
+  box-shadow: 8px 8px 0 var(--border-color);
+  transform: translate(-3px, -3px);
+}
+
+.glass-button {
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  transition: all 0.1s ease;
+}
+
+.glass-button:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.text-gradient {
+  color: var(--text-primary);
+  font-family: 'Bangers', cursive;
+  letter-spacing: 2px;
+}
