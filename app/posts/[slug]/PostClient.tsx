@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "@/app/components/Motion";
@@ -23,15 +23,17 @@ interface PostClientProps {
 }
 
 export function PostClient({ post }: PostClientProps) {
-  const [progress, setProgress] = useState(0);
+  const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const updateProgress = () => {
       const scrollTop = window.scrollY;
       const docHeight =
         document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      setProgress(scrollPercent);
+      const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
+      if (progressRef.current) {
+        progressRef.current.style.transform = `scaleX(${scrollPercent})`;
+      }
     };
 
     window.addEventListener("scroll", updateProgress);
@@ -43,9 +45,10 @@ export function PostClient({ post }: PostClientProps) {
       <MangaBackground />
 
       {/* Reading Progress Bar */}
-      <motion.div
+      <div
+        ref={progressRef}
         className="reading-progress"
-        style={{ scaleX: progress / 100 }}
+        style={{ transform: "scaleX(0)" }}
       />
 
       {/* Back Button */}

@@ -104,7 +104,7 @@ export async function getPostBySlug(slug: string): Promise<PostData | null> {
 
 export async function getAllPosts(): Promise<PostData[]> {
   const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames
+  const posts = fileNames
     .filter(fileName => fileName.endsWith('.md'))
     .map(fileName => {
       const slug = fileName.replace(/\.md$/, '');
@@ -124,7 +124,9 @@ export async function getAllPosts(): Promise<PostData[]> {
       };
     });
 
-  return allPostsData.sort((a, b) => (a.date < b.date ? 1 : -1));
+  // Sort by date descending
+  posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+  return posts;
 }
 
 export async function getAllTags(): Promise<string[]> {
