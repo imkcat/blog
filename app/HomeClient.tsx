@@ -8,7 +8,6 @@ import { IconCalendar, IconClock } from './components/Icons';
 interface Post {
   slug: string;
   title: string;
-  description: string;
   date: string;
   readTime: string;
   tags: string[];
@@ -24,35 +23,53 @@ export function HomeClient({ posts }: HomeClientProps) {
     <div className="space-y-16">
       {/* Hero Section */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
+        transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
         className="text-center space-y-6 pt-8"
       >
-        <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-          <span className="font-manga manga-title text-6xl md:text-8xl">LUMINA</span>
-        </h1>
-        <p className="text-lg text-[var(--text-secondary)] font-bold tracking-wide max-w-lg mx-auto border-manga-thin p-4 bg-[var(--bg-primary)]" style={{ boxShadow: '3px 3px 0 var(--border-color)' }}>
-          Curated thoughts on the intersection of design, spatial computing, and artificial intelligence.
-        </p>
+        {/* Title with manga shock frame effect */}
+        <div className="relative inline-block">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
+            <span className="font-manga manga-title text-6xl md:text-8xl">I'm Kcat</span>
+          </h1>
+        </div>
+        
+        <motion.p 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.25, delay: 0.15 }}
+          className="text-lg text-[var(--text-secondary)] font-bold tracking-wide max-w-lg mx-auto border-manga-thin p-4 bg-[var(--bg-primary)] shadow-manga"
+        >
+          Fancy mind, fancy life
+        </motion.p>
       </motion.div>
 
       {/* Posts Grid */}
-      <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <StaggerContainer className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-8">
         {posts.map((post) => (
           <StaggerItem key={post.slug}>
             <Link href={`/posts/${post.slug}`} className="block group h-full">
               <motion.article
-                className="manga-panel rounded-none overflow-hidden h-full flex flex-col"
+                whileHover={{ 
+                  y: -3, 
+                  x: -3,
+                  transition: { duration: 0.1 } 
+                }}
+                whileTap={{ 
+                  scale: 0.98,
+                  transition: { duration: 0.05 }
+                }}
+                className="manga-panel overflow-hidden h-full flex flex-col"
               >
-                <div className="relative overflow-hidden shrink-0 h-48 border-b-3 border-[var(--border-color)]">
+                <div className="relative overflow-hidden shrink-0 aspect-video border-b-3 border-[var(--border-color)]">
                   {/* Image placeholder */}
                   <div className="absolute inset-0 img-placeholder" />
                   <Image
                     src={post.imageUrl}
                     alt={post.title}
                     fill
-                    className="object-cover grayscale contrast-125"
+                    className="object-cover"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   {/* Halftone overlay on image */}
@@ -75,13 +92,9 @@ export function HomeClient({ posts }: HomeClientProps) {
                 </div>
 
                 <div className="p-6 flex flex-col flex-1 bg-[var(--bg-primary)]">
-                  <h2 className="font-manga text-2xl leading-tight transition-colors group-hover:underline decoration-4 underline-offset-4">
+                  <h2 className="font-manga text-2xl leading-tight transition-all group-hover:underline decoration-4 underline-offset-4">
                     {post.title}
                   </h2>
-                  
-                  <p className="text-[var(--text-secondary)] text-sm leading-relaxed line-clamp-2 mt-3 font-bold">
-                    {post.description}
-                  </p>
 
                   <div className="flex items-center gap-4 text-[var(--text-tertiary)] text-xs mt-auto pt-4 font-bold">
                     <span className="flex items-center gap-1.5 border border-[var(--border-color)] px-2 py-1">

@@ -20,6 +20,15 @@
   --border-width: 3px;
   
   --accent: #000000;
+
+  /* Code Syntax Highlighting - Light Mode */
+  --code-keyword: #d73a49;
+  --code-string: #22863a;
+  --code-comment: #6a737d;
+  --code-number: #005cc5;
+  --code-function: #6f42c1;
+  --code-type: #e36209;
+  --code-attr: #005cc5;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -34,6 +43,15 @@
     
     --border-color: #FFFFFF;
     --accent: #FFFFFF;
+
+    /* Code Syntax Highlighting - Dark Mode */
+    --code-keyword: #ff7b72;
+    --code-string: #a5d6ff;
+    --code-comment: #8b949e;
+    --code-number: #79c0ff;
+    --code-function: #d2a8ff;
+    --code-type: #ffa657;
+    --code-attr: #79c0ff;
   }
 }
 
@@ -113,47 +131,24 @@ body {
   transform: translate(-3px, -3px);
 }
 
-/* Speech Bubble Tag */
+/* Tag Style */
 .manga-tag {
   background: var(--bg-primary);
   border: 2px solid var(--border-color);
-  position: relative;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.5px;
   transition: all 0.1s ease;
 }
 
-.manga-tag::after {
-  content: '';
-  position: absolute;
-  bottom: -6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 6px solid var(--border-color);
-}
-
-.manga-tag::before {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid var(--bg-primary);
-  z-index: 1;
-}
-
 .manga-tag:hover {
   background: var(--text-primary);
   color: var(--bg-primary);
+}
+
+/* Disable float effect modifier */
+.no-float:hover {
+  transform: none !important;
 }
 
 /* Button Style */
@@ -213,43 +208,6 @@ body {
   background: var(--border-color);
   opacity: 0.06;
   transform-origin: center;
-}
-
-/* Corner decorations */
-.manga-corner {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  border: var(--border-width) solid var(--border-color);
-  pointer-events: none;
-}
-
-.manga-corner-tl {
-  top: 0;
-  left: 0;
-  border-right: none;
-  border-bottom: none;
-}
-
-.manga-corner-tr {
-  top: 0;
-  right: 0;
-  border-left: none;
-  border-bottom: none;
-}
-
-.manga-corner-bl {
-  bottom: 0;
-  left: 0;
-  border-right: none;
-  border-top: none;
-}
-
-.manga-corner-br {
-  bottom: 0;
-  right: 0;
-  border-left: none;
-  border-top: none;
 }
 
 /* ========================================
@@ -325,10 +283,124 @@ body {
   padding: 2px 6px;
 }
 
+.prose code::before,
+.prose code::after {
+  content: none;
+}
+
 .prose pre {
   background: var(--bg-tertiary) !important;
   border: var(--border-width) solid var(--border-color);
   box-shadow: 4px 4px 0 var(--border-color);
+}
+
+.prose pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.prose pre code.hljs {
+  display: block;
+  color: var(--text-secondary);
+}
+
+.prose pre .hljs-keyword,
+.prose pre .hljs-selector-tag {
+  color: var(--code-keyword);
+  font-weight: 700;
+}
+
+.prose pre .hljs-title.function_,
+.prose pre .hljs-title.class_ {
+  color: var(--code-function);
+  font-weight: 700;
+}
+
+.prose pre .hljs-string,
+.prose pre .hljs-selector-class,
+.prose pre .hljs-selector-id {
+  color: var(--code-string);
+}
+
+.prose pre .hljs-attr,
+.prose pre .hljs-property {
+  color: var(--code-attr);
+}
+
+.prose pre .hljs-comment,
+.prose pre .hljs-quote {
+  color: var(--code-comment);
+  font-style: italic;
+}
+
+.prose pre .hljs-number,
+.prose pre .hljs-literal {
+  color: var(--code-number);
+}
+
+.prose pre .hljs-built_in,
+.prose pre .hljs-type {
+  color: var(--code-type);
+}
+
+/* ========================================
+   Tables - Manga Style
+   ======================================== */
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 4px 4px 0 var(--border-color);
+  margin: 1.5rem 0;
+}
+
+.prose thead {
+  background: var(--bg-tertiary);
+}
+
+.prose th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.prose td {
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.prose tbody tr:nth-child(even) {
+  background: var(--bg-tertiary);
+}
+
+.prose tbody tr:hover {
+  background: var(--bg-tertiary);
+}
+
+/* GFM Task List */
+.prose ul:has(input[type="checkbox"]) {
+  list-style: none;
+  padding-left: 0;
+}
+
+.prose li > input[type="checkbox"] {
+  margin-right: 0.5rem;
+  accent-color: var(--text-primary);
+}
+
+/* GFM Strikethrough */
+.prose del {
+  text-decoration: line-through;
+  opacity: 0.7;
 }
 
 /* ========================================

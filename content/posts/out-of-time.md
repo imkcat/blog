@@ -1,12 +1,11 @@
 ---
 title: "Out of Time"
-description: "Haptics, audio, and the invisible interfaces that surround us."
 author: "Kcat"
-date: "2033-01-05"
+date: "2022-05-04"
 readTime: "3 min read"
 imageUrl: "/images/out-of-time.jpg"
-tags: ["Future", "Hardware"]
-slug: "beyond-the-screen"
+tags: ["Covers"]
+slug: "out-of-time"
 ---
 
 > I'm out of time
@@ -22,15 +21,18 @@ slug: "beyond-the-screen"
 ## 歌词
 
 [Intro]
+
 Yeah, yeah
 
 [Verse 1]
+
 The last few months, I've been workin' on me, baby
 There's so much trauma in my life
 I've been so cold to the ones who loved me, baby
 I look back now and I realize
 
 [Pre-Chorus]
+
 And I remember when I held you
 You begged me with your drowning eyes to stay
 And I regret I didn't tell you
@@ -38,12 +40,14 @@ Now I can't keep you from loving him
 You made up your mind
 
 [Chorus]
+
 Say I love you, girl, but I'm out of time
 Say I'm there for you, but I'm out of time
 Say that I'll care for you, but I'm out of time
 Said I'm too late to make you mine, out of time (Ah)
 
 [Verse 2]
+
 If he mess up just a little
 Baby, you know my line
 If you don't trust him a little
@@ -53,6 +57,7 @@ Baby, I'll treat you right
 And I'll love you like I shoulda loved you all the time
 
 [Pre-Chorus]
+
 And I remember when I held you (Held you, baby)
 You begged me with your drowning eyes to stay (Never again, baby)
 And I regret I didn't tell you (Hey)
@@ -60,12 +65,14 @@ Now I can't keep you from loving him
 You made up your mind (Uh)
 
 [Chorus]
+
 Say I love you, girl, but I'm out of time
 Say I'm there for you, but I'm out of time (No)
 Say that I'll care for you, but I'm out of time (Hey)
 Said I'm too late to make you mine, out of time (Ah)
 
 [Outro: The Weeknd]
+
 Ooh, singin', out of time
 Said I had you to myself, but I'm out of time
 Say that I'll care for you, but I'm out of time
@@ -74,6 +81,7 @@ Out of time
 Out of time
 
 [Spoken Outro: Jim Carrey]
+
 Don't you dare touch that dial
 Because like the song says, you are out of time
 You're almost there, but don't panic

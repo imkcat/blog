@@ -17,7 +17,7 @@ const comicNeue = Comic_Neue({
 });
 
 export const metadata: Metadata = {
-  title: "Lumina Blog",
+  title: "I'm Kcat",
   description:
     "Curated thoughts on design, spatial computing, and artificial intelligence.",
 };

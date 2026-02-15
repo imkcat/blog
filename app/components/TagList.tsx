@@ -11,9 +11,9 @@ interface TagListProps {
 export function TagList({ tags, activeTag }: TagListProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.25 }}
       className="flex flex-wrap justify-center gap-3 mb-12"
     >
       <TagPill href="/tags" isActive={!activeTag}>
@@ -38,10 +38,10 @@ function TagPill({ href, isActive, children }: TagPillProps) {
   return (
     <Link href={href}>
       <motion.span
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
+        whileHover={{ scale: 1.03, y: -2, transition: { duration: 0.1 } }}
+        whileTap={{ scale: 0.97, transition: { duration: 0.05 } }}
         className={`
-          inline-block px-4 py-2 text-sm font-bold uppercase tracking-wider transition-all duration-150
+          inline-block px-4 py-2 text-sm font-bold uppercase tracking-wider transition-all duration-100
           border-2 border-[var(--border-color)]
           ${isActive
             ? "bg-[var(--text-primary)] text-[var(--bg-primary)] shadow-manga"

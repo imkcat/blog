@@ -2,14 +2,68 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
-import html from 'remark-html';
+import remarkGfm from 'remark-gfm';
+import remarkRehype from 'remark-rehype';
+import rehypeRaw from 'rehype-raw';
+import rehypeStringify from 'rehype-stringify';
+import rehypeHighlight from 'rehype-highlight';
+import sanitizeHtml from 'sanitize-html';
 
 const postsDirectory = path.join(process.cwd(), 'content/posts');
+
+const allowedIframeHostnames = [
+  'www.youtube.com',
+  'youtube.com',
+  'www.youtube-nocookie.com',
+  'player.vimeo.com',
+  'vimeo.com',
+  'player.bilibili.com',
+  'music.163.com',
+];
+
+function sanitizePostHtml(content: string): string {
+  return sanitizeHtml(content, {
+    allowedTags: [...sanitizeHtml.defaults.allowedTags, 'img', 'iframe', 'span', 'table', 'thead', 'tbody', 'tr', 'th', 'td', 'del', 'input'],
+    allowedAttributes: {
+      ...sanitizeHtml.defaults.allowedAttributes,
+      code: ['class'],
+      pre: ['class'],
+      span: ['class'],
+      div: ['align', 'class', 'style'],
+      img: ['src', 'srcset', 'alt', 'title', 'width', 'height', 'loading', 'class', 'style'],
+      table: ['class'],
+      th: ['align', 'class'],
+      td: ['align', 'class'],
+      input: ['type', 'checked', 'disabled', 'class'],
+      iframe: [
+        'src',
+        'width',
+        'height',
+        'frameborder',
+        'allow',
+        'allowfullscreen',
+        'scrolling',
+        'marginwidth',
+        'marginheight',
+        'border',
+        'framespacing',
+        'title',
+        'loading',
+        'referrerpolicy',
+      ],
+    },
+    allowedSchemesByTag: {
+      ...sanitizeHtml.defaults.allowedSchemesByTag,
+      iframe: ['http', 'https'],
+    },
+    allowProtocolRelative: true,
+    allowedIframeHostnames,
+  });
+}
 
 export interface PostData {
   slug: string;
   title: string;
-  description: string;
   content: string;
   author: string;
   date: string;
@@ -24,13 +78,18 @@ export async function getPostBySlug(slug: string): Promise<PostData | null> {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
-    const processedContent = await remark().use(html).process(content);
-    const contentHtml = processedContent.toString();
+    const processedContent = await remark()
+      .use(remarkGfm)
+      .use(remarkRehype, { allowDangerousHtml: true })
+      .use(rehypeRaw)
+      .use(rehypeHighlight)
+      .use(rehypeStringify, { allowDangerousHtml: true })
+      .process(content);
+    const contentHtml = sanitizePostHtml(processedContent.toString());
 
     return {
       slug,
       title: data.title,
-      description: data.description,
       content: contentHtml,
       author: data.author,
       date: data.date,
@@ -56,7 +115,6 @@ export async function getAllPosts(): Promise<PostData[]> {
       return {
         slug,
         title: data.title,
-        description: data.description,
         content: '',
         author: data.author,
         date: data.date,

@@ -1,58 +1,66 @@
 'use client';
 
 import Link from 'next/link';
-import { MeshGradient } from './components/MeshGradient';
+import { MangaBackground } from './components/MangaBackground';
 import { motion } from './components/Motion';
+import { IconArrowLeft } from './components/Icons';
 
 export default function NotFound() {
   return (
     <>
-      <MeshGradient />
+      <MangaBackground />
 
       <main className="min-h-screen relative z-10 flex items-center justify-center px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.4 }}
           className="text-center"
         >
-          <motion.h1
+          {/* Shock frame effect around 404 */}
+          <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-8xl md:text-9xl font-bold text-gradient mb-4"
+            transition={{ duration: 0.3, delay: 0.1 }}
+            className="manga-shock-frame inline-block p-8 mb-8"
           >
-            404
-          </motion.h1>
+            <h1 className="manga-404 text-[var(--text-primary)]">
+              404
+            </h1>
+          </motion.div>
           
-          <h2 className="text-2xl md:text-3xl font-semibold text-[var(--text-primary)] mb-4">
-            Page Not Found
-          </h2>
-          
-          <p className="text-[var(--text-secondary)] mb-8 max-w-md mx-auto">
-            The page you're looking for doesn't exist or has been moved.
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.3 }}
+            className="manga-panel-double p-8 max-w-md mx-auto"
+          >
+            <h2 className="font-manga text-2xl md:text-3xl text-[var(--text-primary)] mb-4">
+              PAGE NOT FOUND!
+            </h2>
+            
+            <p className="text-[var(--text-secondary)] mb-8 font-bold">
+              The page you're looking for has vanished into another dimension...
+            </p>
 
-          <Link
-            href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient text-white font-medium transition-transform hover:scale-105"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-5 h-5"
+            <Link
+              href="/"
+              className="manga-button-impact inline-flex items-center gap-3 px-6 py-3"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
-              />
-            </svg>
-            Back to Home
-          </Link>
+              <IconArrowLeft className="w-5 h-5" />
+              <span className="font-manga">BACK TO HOME</span>
+            </Link>
+          </motion.div>
+          
+          {/* Decorative elements */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="mt-8 text-[var(--text-tertiary)] font-manga text-sm"
+          >
+            — ERROR —
+          </motion.div>
         </motion.div>
       </main>
     </>
