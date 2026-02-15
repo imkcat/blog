@@ -94,7 +94,7 @@ export async function getPostBySlug(slug: string): Promise<PostData | null> {
       author: data.author,
       date: data.date,
       readTime: data.readTime,
-      imageUrl: data.imageUrl,
+      imageUrl: `/images/${slug}/index.jpg`,
       tags: data.tags,
     };
   } catch {
@@ -119,7 +119,7 @@ export async function getAllPosts(): Promise<PostData[]> {
         author: data.author,
         date: data.date,
         readTime: data.readTime,
-        imageUrl: data.imageUrl,
+        imageUrl: `/images/${slug}/index.jpg`,
         tags: data.tags,
       };
     });

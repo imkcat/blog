@@ -3,9 +3,7 @@ title: "SXWME"
 author: "Kcat"
 date: "2020-05-27"
 readTime: "4 min read"
-imageUrl: "/images/sxwme.jpg"
 tags: ["Covers"]
-slug: "sxwme"
 ---
 
 Covered from **Far East Movement** & **Jay Park**

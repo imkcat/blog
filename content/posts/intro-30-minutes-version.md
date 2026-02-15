@@ -3,9 +3,7 @@ title: "Intro (30 minutes Version) - Mixed by Kcat"
 author: "Kcat"
 date: "2020-08-19"
 readTime: "6 min read"
-imageUrl: "/images/intro-30-minutes-version.jpg"
 tags: []
-slug: "intro-30-minutes-version"
 ---
 
 > 以前的母带丢了，既然丢了，我就索性 remaster 了一个

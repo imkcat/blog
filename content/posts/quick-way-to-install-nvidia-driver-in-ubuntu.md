@@ -3,9 +3,7 @@ title: "在 Ubuntu 下快速安装 Nvidia 驱动"
 author: "Kcat"
 date: "2018-10-22"
 readTime: "4 min read"
-imageUrl: "/images/quick-way-to-install-nvidia-driver-in-ubuntu.jpg"
 tags: ["随笔小记", "Ubuntu", "Nvidia"]
-slug: "quick-way-to-install-nvidia-driver-in-ubuntu"
 ---
 
 在 Ubuntu 下，如果下载了 Nvidia 官方的驱动，然后按照 Nvidia 官方繁琐的 [安装方法](https://us.download.nvidia.com/XFree86/Linux-x86_64/410.66/README/index.html) 安装真的是一种折磨，而且在其中也会遇到非常多的问题
