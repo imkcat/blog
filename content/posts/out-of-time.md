@@ -12,11 +12,11 @@ slug: "out-of-time"
 
 ## 歌曲
 
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1944197994&auto=1&height=66"></iframe>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1990718629&auto=0&height=66"></iframe>
 
 ## MV
 
-<iframe src="//player.bilibili.com/player.html?aid=213858942&bvid=BV1wa411Y7ki&cid=714462930&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="100%" height="470px"> </iframe>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=213858942&bvid=BV1wa411Y7ki&cid=714462930&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="100%" height="470px"></iframe>
 
 ## 歌词
 
