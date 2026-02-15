@@ -13,7 +13,7 @@ slug: "intro-30-minutes-version"
 
 ## 视频
 
-<iframe src="//player.bilibili.com/player.html?aid=4816008&bvid=BV1Ys411i7xD&cid=211777727&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="700px" height="500px"> </iframe>
+<iframe src="//player.bilibili.com/player.html?aid=4816008&bvid=BV1Ys411i7xD&cid=211777727&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width="100%" height="400px"> </iframe>
 
 ---
 ## 音频母带（PCM）
