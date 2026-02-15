@@ -1,11 +1,9 @@
 ---
 title: "GraphQL 标准概览"
 author: "Kcat"
-date: "2020-01-09"
+date: "2020-01-09 13:36"
 readTime: "4 min read"
-imageUrl: "/images/graphql-spec.jpg"
 tags: ["GraphQL"]
-slug: "graphql-spec"
 ---
 
 本篇基于 [2018 六月份](https://graphql.github.io/graphql-spec/June2018/) 发布的版本

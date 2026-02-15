@@ -1,11 +1,9 @@
 ---
 title: "Out of Time"
 author: "Kcat"
-date: "2022-05-04"
+date: "2022-05-04 00:00"
 readTime: "3 min read"
-imageUrl: "/images/out-of-time.jpg"
 tags: ["Covers"]
-slug: "out-of-time"
 ---
 
 > I'm out of time

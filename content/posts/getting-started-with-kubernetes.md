@@ -1,11 +1,9 @@
 ---
 title: "快速上手 Kubernetes"
 author: "Kcat"
-date: "2020-09-29"
+date: "2020-09-29 14:48"
 readTime: "5 min read"
-imageUrl: "/images/getting-started-with-kubernetes.jpg"
 tags: []
-slug: "getting-started-with-kubernetes"
 ---
 
 ## 什么是 Kubernetes?

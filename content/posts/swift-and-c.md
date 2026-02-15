@@ -1,11 +1,9 @@
 ---
 title: "Swift & C"
 author: "Kcat"
-date: "2018-01-05"
+date: "2018-01-05 15:10"
 readTime: "5 min read"
-imageUrl: "/images/swift-and-c/index.jpg"
 tags: ["Swift", "C", "LLVM"]
-slug: "swift-and-c"
 ---
 
 因为 Swift 是建立在 LLVM 之上的，所以 Swift 是支持与 C 交互的。但是在 Swift 中，让其与 C 混编是一件说起来有点麻烦又不太麻烦的事儿，麻烦就是要实现混编可能需要一些零碎的步骤，不麻烦就是 Swift 也提供了和 C 对应的等价类型来进行转换使用

@@ -1,11 +1,9 @@
 ---
 title: "World Creator 2 和 Unreal Engine 4"
 author: "Kcat"
-date: "2020-03-22"
+date: "2020-03-22 21:56"
 readTime: "4 min read"
-imageUrl: "/images/world-creator-and-unreal-engine.jpg"
 tags: []
-slug: "world-creator-and-unreal-engine"
 ---
 
 > World Creator 2 是个非常强大的 Landscape 制作工具，而且在 GUI 和可视化方面还是要比 World Machine 要现代化太多了（虽然 World Machine 也有 GeoGlyph），再加上对 Game Engine 的友好度，就是它了

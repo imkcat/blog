@@ -281,6 +281,8 @@ body {
   background: var(--bg-tertiary);
   border: 1px solid var(--border-color);
   padding: 2px 6px;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .prose code::before,

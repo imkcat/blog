@@ -1,11 +1,9 @@
 ---
 title: "Insomnia"
 author: "Kcat"
-date: "2018-04-12"
+date: "2018-04-12 15:52"
 readTime: "5 min read"
-imageUrl: "/images/insomnia/index.jpg"
 tags: ["开发工具推荐", "Insomnia", "GraphQL"]
-slug: "insomnia"
 ---
 
 Insomnia 是一款支持 GraphQL 的 REST API 调试工具，促使我使用它的最大原因也是它对于 GraphQL 有着良好的支持，当然也让我慢慢舍弃了 Postman

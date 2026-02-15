@@ -1,11 +1,9 @@
 ---
 title: "Phabricator 解锁 Restricted Project"
 author: "Kcat"
-date: "2018-07-22"
+date: "2018-07-22 16:25"
 readTime: "4 min read"
-imageUrl: "/images/unlock-restricted-project-in-phabricator.jpg"
 tags: ["随笔小记", "Phabricator"]
-slug: "unlock-restricted-project-in-phabricator"
 ---
 
 这是一个很无奈的问题，项目变成这样的状态：![Restricted Project](/images/unlock-restricted-project-in-phabricator/3wBsryciYFEBOP4Pft1jSsAtwvUwl87y.jpg)无法查询到项目，也无法编辑或者进入项目，解决了许久，最后其实发现自己只是想复杂了...

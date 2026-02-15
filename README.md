@@ -1,43 +1,39 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Kcat's Blog
 
-# Lumina Blog - iOS 26 Concept
+A personal tech blog built with Next.js 15, featuring static site generation (SSG) and Markdown content management.
 
-A futuristic blog concept showcasing iOS 26 design language with spatial computing aesthetics. Built with Next.js 15, Tailwind CSS, and static site generation.
-
-![Static Site](https://img.shields.io/badge/Static-SSG-blue)
 ![Next.js](https://img.shields.io/badge/Next.js-15-black)
+![React](https://img.shields.io/badge/React-19-blue)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-blue)
 
 ## Features
 
 - **Static Site Generation (SSG)** - Pre-rendered HTML for optimal performance
 - **Markdown Content** - Write posts in Markdown with YAML frontmatter
-- **Zero Runtime** - No Node.js server needed for deployment
-- **Glassmorphism UI** - iOS 26 inspired translucent design
-- **Dynamic Tag Filtering** - Organize content by topics
-- **Fully Responsive** - Optimized for all screen sizes
+- **Tag Filtering** - Organize and filter content by topics
+- **Responsive Design** - Optimized for all screen sizes
+- **Syntax Highlighting** - Code highlighting powered by rehype-highlight
 
 ## Project Structure
 
 ```
-lumina-blog/
+blog/
 ├── content/posts/          # Markdown blog posts
-│   ├── the-spatial-web-interface.md
-│   ├── neural-architectures-in-2030.md
+│   ├── flutter-widget-safearea.md
+│   ├── getting-started-with-kubernetes.md
 │   └── ...
 ├── app/
 │   ├── lib/
 │   │   └── markdown.ts     # Markdown parsing utilities
 │   ├── components/
-│   │   ├── Navigation.tsx  # Client navigation
-│   │   └── Icons.tsx       # SVG icons
+│   │   ├── Navigation.tsx  # Navigation component
+│   │   ├── PostCard.tsx    # Post card component
+│   │   └── TagList.tsx     # Tag list component
 │   ├── page.tsx            # Homepage
-│   ├── posts/[slug]/       # Dynamic post pages
+│   ├── posts/[slug]/       # Post detail pages
 │   └── tags/[tag]/         # Tag filtered pages
-├── out/                    # Static export output
-└── next.config.ts          # Static export config
+├── public/images/          # Post image assets
+└── next.config.ts          # Next.js configuration
 ```
 
 ## Getting Started
@@ -65,17 +61,16 @@ Create a new Markdown file in `content/posts/` with the following frontmatter:
 ```markdown
 ---
 title: "Your Post Title"
-description: "A brief description for the post preview"
-author: "Your Name"
-date: "2033-01-26"
+author: "Kcat"
+date: "2025-01-01"
 readTime: "5 min read"
-imageUrl: "https://picsum.photos/800/600?random=5"
 tags: ["Tag1", "Tag2"]
-slug: "your-post-slug"
 ---
 
 Your post content here...
 ```
+
+> **Note:** The `slug` is automatically derived from the filename (e.g., `my-post.md` → `my-post`), and `imageUrl` is computed as `/images/[slug]/index.jpg`.
 
 ## Build for Production
 
@@ -83,40 +78,22 @@ Your post content here...
 bun run build
 ```
 
-This generates a static `out/` directory containing all HTML files.
+This generates static files in the `out/` directory.
 
-### Preview Static Build
+### Preview Build
 
 ```bash
-npx serve@latest out
+bun run preview
 ```
 
 ## Deployment
 
 The `out/` directory can be deployed to any static hosting service:
 
+- **Vercel** - Recommended, connect your GitHub repository
 - **GitHub Pages** - Push to `gh-pages` branch
 - **Netlify** - Drag and drop the `out/` folder
-- **Vercel** - Set output mode to "static"
 - **Cloudflare Pages** - Connect your repository
-- **AWS S3** - Upload to a public bucket
-
-## Configuration
-
-### Static Export
-
-The `next.config.ts` is configured for static export:
-
-```typescript
-output: 'export'           // Enable static export
-images.unoptimized: true   // Disable image optimization for static export
-```
-
-### Adding Dependencies
-
-```bash
-bun add <package>
-```
 
 ## Tech Stack
 
@@ -124,9 +101,9 @@ bun add <package>
 - **React 19** - UI library
 - **TypeScript** - Type safety
 - **Tailwind CSS** - Styling
+- **Framer Motion** - Animations
 - **gray-matter** - Frontmatter parsing
-- **remark** - Markdown processing
-- **remark-html** - Markdown to HTML conversion
+- **remark / rehype** - Markdown processing
 
 ## License
 

@@ -145,7 +145,6 @@ export function PostClient({ post }: PostClientProps) {
                   prose-blockquote:border-l-4 prose-blockquote:border-[var(--border-color)] prose-blockquote:text-[var(--text-secondary)]
                   prose-code:text-[var(--text-primary)] prose-code:bg-[var(--bg-tertiary)] prose-code:border prose-code:border-[var(--border-color)] prose-code:px-1.5 prose-code:py-0.5
                   prose-pre:bg-[var(--bg-tertiary)] prose-pre:border-3 prose-pre:border-[var(--border-color)] prose-pre:shadow-manga
-                  prose-img:border-3 prose-img:border-[var(--border-color)]
                   dark:prose-invert"
                 dangerouslySetInnerHTML={{ __html: post.content }}
               />

@@ -1,11 +1,9 @@
 ---
 title: "Flutter Widget - SafeArea"
 author: "Kcat"
-date: "2019-05-03"
+date: "2019-05-03 16:00"
 readTime: "4 min read"
-imageUrl: "/images/flutter-widget-safearea.jpg"
 tags: ["Flutter", "Widget", "SafeArea"]
-slug: "flutter-widget-safearea"
 ---
 
 `SafeArea`[^1] 是用于适配不规则尺寸设备的一个 Widget，如 iPhone X 这类设备
