@@ -1,7 +1,7 @@
 ---
 title: "Swift & C"
 author: "Kcat"
-date: "2018-01-05"
+date: "2018-01-05 15:10"
 readTime: "5 min read"
 tags: ["Swift", "C", "LLVM"]
 ---

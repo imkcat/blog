@@ -1,7 +1,7 @@
 ---
 title: "GraphQL 标准概览"
 author: "Kcat"
-date: "2020-01-09"
+date: "2020-01-09 13:36"
 readTime: "4 min read"
 tags: ["GraphQL"]
 ---

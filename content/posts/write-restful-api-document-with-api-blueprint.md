@@ -1,7 +1,7 @@
 ---
 title: "使用 API Blueprint 来编写 RESTful API 文档"
 author: "Kcat"
-date: "2017-11-30"
+date: "2017-11-30 23:34"
 readTime: "4 min read"
 tags: ["API Blueprint", "Markdown", "RESTful", "API", "Sublime Text", "Atom", "snowboard", "aglio"]
 ---

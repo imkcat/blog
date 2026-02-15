@@ -1,7 +1,7 @@
 ---
 title: "在 Ubuntu 下快速安装 Nvidia 驱动"
 author: "Kcat"
-date: "2018-10-22"
+date: "2018-10-22 23:06"
 readTime: "4 min read"
 tags: ["随笔小记", "Ubuntu", "Nvidia"]
 ---

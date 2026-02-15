@@ -1,7 +1,7 @@
 ---
 title: "Phabricator 解锁 Restricted Project"
 author: "Kcat"
-date: "2018-07-22"
+date: "2018-07-22 16:25"
 readTime: "4 min read"
 tags: ["随笔小记", "Phabricator"]
 ---

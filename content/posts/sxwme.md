@@ -1,7 +1,7 @@
 ---
 title: "SXWME"
 author: "Kcat"
-date: "2020-05-27"
+date: "2020-05-27 12:02"
 readTime: "4 min read"
 tags: ["Covers"]
 ---

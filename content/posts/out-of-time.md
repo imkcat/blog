@@ -1,7 +1,7 @@
 ---
 title: "Out of Time"
 author: "Kcat"
-date: "2022-05-04"
+date: "2022-05-04 00:00"
 readTime: "3 min read"
 tags: ["Covers"]
 ---

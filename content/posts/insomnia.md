@@ -1,7 +1,7 @@
 ---
 title: "Insomnia"
 author: "Kcat"
-date: "2018-04-12"
+date: "2018-04-12 15:52"
 readTime: "5 min read"
 tags: ["开发工具推荐", "Insomnia", "GraphQL"]
 ---

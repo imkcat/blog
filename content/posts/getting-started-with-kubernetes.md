@@ -1,7 +1,7 @@
 ---
 title: "快速上手 Kubernetes"
 author: "Kcat"
-date: "2020-09-29"
+date: "2020-09-29 14:48"
 readTime: "5 min read"
 tags: []
 ---

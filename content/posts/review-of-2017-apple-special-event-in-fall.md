@@ -1,7 +1,7 @@
 ---
 title: "2017 秋季 Apple Special Event 回顾"
 author: "Kcat"
-date: "2017-09-13"
+date: "2017-09-13 20:17"
 readTime: "4 min read"
 tags: ["Apple Special Event", "iPhone", "Apple Watch", "Apple TV", "iPhone X", "iPhone 8", "Apple Watch Series 3", "Apple TV 4k"]
 ---

@@ -1,7 +1,7 @@
 ---
 title: "Intro (30 minutes Version) - Mixed by Kcat"
 author: "Kcat"
-date: "2020-08-19"
+date: "2020-08-19 22:56"
 readTime: "6 min read"
 tags: []
 ---

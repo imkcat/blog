@@ -1,7 +1,7 @@
 ---
 title: "Flutter Widget - SafeArea"
 author: "Kcat"
-date: "2019-05-03"
+date: "2019-05-03 16:00"
 readTime: "4 min read"
 tags: ["Flutter", "Widget", "SafeArea"]
 ---
