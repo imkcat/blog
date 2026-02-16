@@ -35,14 +35,35 @@ export function HomeClient({ posts }: HomeClientProps) {
           </h1>
         </div>
         
-        <motion.p 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.25, delay: 0.15 }}
-          className="text-lg text-[var(--text-secondary)] font-bold tracking-wide max-w-lg mx-auto border-manga-thin p-4 bg-[var(--bg-primary)] shadow-manga"
+        <motion.div 
+          initial={{ opacity: 0, rotate: -3 }}
+          animate={{ opacity: 1, rotate: -2 }}
+          transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+          className="flex justify-center mt-4"
         >
-          Fancy mind, fancy life
-        </motion.p>
+          <div className="relative">
+            <p 
+              className="text-2xl md:text-3xl text-[var(--text-primary)] tracking-wide"
+              style={{ fontFamily: 'var(--font-caveat), cursive' }}
+            >
+              Fancy mind, fancy life
+            </p>
+            {/* Hand-drawn underline */}
+            <svg 
+              className="absolute -bottom-1 left-0 w-full h-3" 
+              viewBox="0 0 200 12" 
+              preserveAspectRatio="none"
+            >
+              <path 
+                d="M 0,6 Q 25,2 50,6 T 100,6 T 150,6 T 200,6" 
+                fill="none" 
+                stroke="var(--border-color)" 
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+        </motion.div>
       </motion.div>
 
       {/* Posts Grid */}

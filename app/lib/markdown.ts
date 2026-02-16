@@ -181,3 +181,53 @@ export async function getPostsByTag(tag: string): Promise<PostData[]> {
   const posts = await getAllPosts();
   return posts.filter(post => post.tags.includes(tag));
 }
+
+// ============================================
+// Pages System
+// ============================================
+
+const pagesDirectory = path.join(process.cwd(), 'content/pages');
+
+export interface PageData {
+  slug: string;
+  title: string;
+  content: string;
+  description?: string;
+}
+
+export async function getPageBySlug(slug: string): Promise<PageData | null> {
+  try {
+    const fullPath = path.join(pagesDirectory, `${slug}.md`);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data, content } = matter(fileContents);
+
+    const processedContent = await remark()
+      .use(remarkGfm)
+      .use(remarkRehype, { allowDangerousHtml: true })
+      .use(rehypeRaw)
+      .use(rehypeHighlight)
+      .use(rehypeStringify, { allowDangerousHtml: true })
+      .process(content);
+    const contentHtml = sanitizePostHtml(processedContent.toString());
+
+    return {
+      slug,
+      title: data.title,
+      content: contentHtml,
+      description: data.description,
+    };
+  } catch {
+    return null;
+  }
+}
+
+export function getAllPages(): string[] {
+  try {
+    const fileNames = fs.readdirSync(pagesDirectory);
+    return fileNames
+      .filter(fileName => fileName.endsWith('.md'))
+      .map(fileName => fileName.replace(/\.md$/, ''));
+  } catch {
+    return [];
+  }
+}

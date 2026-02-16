@@ -2,25 +2,43 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { motion } from './Motion';
-import { IconHome, IconTags } from './Icons';
+import { navItems, NavIcon } from '@/app/lib/config';
+import { IconHome, IconTags, IconUser, IconBriefcase, IconMail, IconLink } from './Icons';
+
+const iconMap: Record<NavIcon, React.ComponentType<{ className?: string }>> = {
+  home: IconHome,
+  tags: IconTags,
+  user: IconUser,
+  briefcase: IconBriefcase,
+  mail: IconMail,
+  link: IconLink,
+};
 
 export function Navigation() {
   const pathname = usePathname();
-  const isHome = pathname === '/';
-  const isTags = pathname.startsWith('/tags');
+
+  const isActive = (href: string): boolean => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    if (href.startsWith('/pages/')) {
+      return pathname === href || pathname.startsWith(href + '/');
+    }
+    return pathname.startsWith(href);
+  };
 
   return (
     <header className="fixed top-4 left-0 right-0 z-50 flex justify-center">
       <nav className="manga-nav px-2 py-2 flex items-center gap-1">
-        <NavLink href="/" isActive={isHome}>
-          <IconHome className="w-4 h-4" />
-          <span>HOME</span>
-        </NavLink>
-        <NavLink href="/tags" isActive={isTags}>
-          <IconTags className="w-4 h-4" />
-          <span>TOPICS</span>
-        </NavLink>
+        {navItems.map((item) => {
+          const Icon = iconMap[item.icon];
+          return (
+            <NavLink key={item.href} href={item.href} isActive={isActive(item.href)}>
+              <Icon className="w-4 h-4" />
+              <span>{item.label}</span>
+            </NavLink>
+          );
+        })}
       </nav>
     </header>
   );

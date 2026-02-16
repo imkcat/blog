@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bangers, Comic_Neue } from "next/font/google";
+import { Bangers, Comic_Neue, Caveat } from "next/font/google";
 import "./globals.css";
 
 const bangers = Bangers({
@@ -16,6 +16,13 @@ const comicNeue = Comic_Neue({
   variable: "--font-comic",
 });
 
+const caveat = Caveat({
+  weight: ["400", "700"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-caveat",
+});
+
 export const metadata: Metadata = {
   title: "I'm Kcat",
   description:
@@ -28,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${bangers.variable} ${comicNeue.variable}`}>
+    <html lang="en" className={`${bangers.variable} ${comicNeue.variable} ${caveat.variable}`}>
       <body className="antialiased font-comic">{children}</body>
     </html>
   );
